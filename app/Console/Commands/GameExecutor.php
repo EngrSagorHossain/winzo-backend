@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Events\RemainingTimeChanged;
+use App\Events\GameActions;
 
 class GameExecutor extends Command
 {
@@ -34,7 +35,12 @@ class GameExecutor extends Command
             $this->time--;
             sleep(1);
             if($this->time === 0){
-                sleep(5);
+                $data = [
+                    'action'=>'winner',
+                    'number'=> mt_rand(1,3),
+                ];
+                broadcast(new GameActions($data));
+                sleep(7);
                 $this->time = 15;
             }
         }
