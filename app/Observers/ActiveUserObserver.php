@@ -9,12 +9,12 @@ class ActiveUserObserver
 {
     public function created(ActiveUser $activeUser)
     {
-        broadcast(new GameActions($activeUser));
+        // broadcast(new GameActions($activeUser));
     }
 
     public function deleted(ActiveUser $activeUser)
     {
-        broadcast(new GameActions($activeUser));
+        // broadcast(new GameActions($activeUser));
     }
 }
 
