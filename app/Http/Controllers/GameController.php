@@ -11,7 +11,13 @@ use App\Models\Bet;
 class GameController extends Controller
 {
     public function receivedData(Request $request)
+
     {
+          if ($request->action == 'user_list') {
+            $data = ActiveUser::all();
+            broadcast(new GameUsers($data));
+        }
+
         if ($request->action == 'user_joined') {
             ActiveUser::create($request->all());
             $data = ActiveUser::all();
@@ -59,6 +65,7 @@ class GameController extends Controller
 
             broadcast(new GameActions($data));
         }
+
 
         return response()->json('success');
 
