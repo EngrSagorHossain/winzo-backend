@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
+use App\Http\Controllers\WinLossController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,3 +21,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::post('/actions', [GameController::class,'receivedData']);
+Route::get('/winloss', [WinLossController::class ,'listOfWinLoss']);
+Route::post('/winloss', [WinLossController::class ,'WinLoss']);
+
