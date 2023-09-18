@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('uid');
             $table->string('full_name');
+            $table->string('room_type')->nullable();
             $table->string('coins');
             $table->string('profile_image');
             $table->timestamps();
