@@ -53,12 +53,12 @@ class GreedyExecutor extends Command
                      break;
                  }
 
-                 usleep(500000);
+                 usleep(300000);
              }
 
              if ($repeatCount >= 2) {
                 broadcast(new GreedyActions($i));
-                 sleep(10);
+                 sleep(20);
                  $repeatCount = 0;
                  $stop = false;
              }
