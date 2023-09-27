@@ -58,7 +58,7 @@ class GreedyExecutor extends Command
 
              if ($repeatCount >= 2) {
                 broadcast(new GreedyActions($i));
-                 sleep(80);
+                 sleep(20);
                  $repeatCount = 0;
                  $stop = false;
              }
