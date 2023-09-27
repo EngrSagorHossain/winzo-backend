@@ -20,10 +20,13 @@ class GreedyActions implements ShouldBroadcast
      * @return void
      */
     public $winValue;
-    public function __construct($winValue)
+    public $action;
+    public function __construct($winValue,$action)
     {
         //
         $this->winValue = $winValue;
+        $this->action = $action;
+
     }
 
     /**
@@ -39,7 +42,7 @@ class GreedyActions implements ShouldBroadcast
     {
         return  [
             'winValue' => $this->winValue,
-            'action' =>'winvalue',
+            'action' =>$this->action,
 
     ];
     }

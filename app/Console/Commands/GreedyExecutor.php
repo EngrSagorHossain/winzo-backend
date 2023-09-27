@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Events\GreedyGameTime;
 use App\Events\GreedyActions;
+use App\Http\Controllers\GreedyController;
 
 class GreedyExecutor extends Command
 {
@@ -27,6 +28,13 @@ class GreedyExecutor extends Command
      *
      * @return int
      */
+    protected $controller;
+
+    public function __construct(GreedyController $controller)
+    {
+        parent::__construct();
+        $this->controller = $controller;
+    }
 
      public function handle()
      {
@@ -57,10 +65,13 @@ class GreedyExecutor extends Command
              }
 
              if ($repeatCount >= 2) {
-                broadcast(new GreedyActions($i));
+                broadcast(new GreedyActions($i,'winvalue'));
+                 // Call the addRound function from the controller
+                 $this->controller->addRound();
                  sleep(20);
                  $repeatCount = 0;
                  $stop = false;
+
              }
          }
      }
