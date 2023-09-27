@@ -53,7 +53,7 @@ class GreedyExecutor extends Command
                      break;
                  }
 
-                 usleep(100000);
+                 usleep(200000);
              }
 
              if ($repeatCount >= 2) {
