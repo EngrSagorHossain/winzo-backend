@@ -8,10 +8,10 @@ class WinLossController extends Controller
 {
     // List all win_losses
     public function listOfWinLoss()
-    {
-        $winLosses = WinLoss::all();
-        return response()->json($winLosses);
-    }
+{
+    $winLosses = WinLoss::latest()->take(20)->get();
+    return response()->json($winLosses);
+}
 
     // Add a new win_loss
     public function WinLoss(Request $request)
