@@ -64,15 +64,20 @@ class GreedyExecutor extends Command
                  usleep(200000);
              }
 
-             if ($repeatCount >= 2) {
-                broadcast(new GreedyActions($i,'winvalue'));
-                 // Call the addRound function from the controller
-                 $this->controller->addRound();
-                 sleep(20);
-                 $repeatCount = 0;
-                 $stop = false;
+             if ($repeatCount >= 3) {
+                broadcast(new GreedyActions($i, 'winvalue'));
+                // Call the addRound function from the controller
+                $this->controller->addRound();
 
-             }
+                for ($j = 20; $j >= 0; $j--) {
+                    broadcast(new GreedyActions($j, 'timer'));
+                    sleep(1); // Sleep for 1 second between each value
+                }
+
+                $repeatCount = 0;
+                $stop = false;
+            }
+
          }
      }
 
