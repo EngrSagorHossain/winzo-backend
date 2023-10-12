@@ -21,7 +21,7 @@ class GameExecutor extends Command
      * @var string
      */
     protected $description = 'Start the game';
-    private $time = 20;
+    private $time = 27;
 
     /**
      * Execute the console command.
@@ -40,8 +40,8 @@ class GameExecutor extends Command
                     'number'=> mt_rand(1,3),
                 ];
                 broadcast(new GameActions($data));
-                sleep(7);
-                $this->time = 20;
+
+                $this->time = 27;
             }
         }
     }
